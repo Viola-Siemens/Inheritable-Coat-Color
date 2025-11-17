@@ -3,6 +3,7 @@ package com.hexagram2021.inheritable_coat_color.registry;
 import com.hexagram2021.chromosomelib.common.trait.Trait;
 import com.hexagram2021.chromosomelib.platform.Services;
 import com.hexagram2021.inheritable_coat_color.common.trait.CoatColorTrait;
+import com.hexagram2021.inheritable_coat_color.common.trait.HairLengthTrait;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
@@ -27,11 +28,18 @@ public final class ICCTraits {
 	public static final Holder<Trait> WHITE = registerColorTrait("white", DyeColor.WHITE);
 	public static final Holder<Trait> YELLOW = registerColorTrait("yellow", DyeColor.YELLOW);
 
+	public static final Holder<Trait> SHORT_HAIR = registerHairLengthTrait("short_hair", false);
+	public static final Holder<Trait> LONG_HAIR = registerHairLengthTrait("long_hair", true);
+
 	private ICCTraits() {
 	}
 
 	private static Holder<Trait> registerColorTrait(String code, DyeColor color) {
 		return Services.PLATFORM.registerTrait(new ResourceLocation(MODID, code), () -> new CoatColorTrait(color));
+	}
+
+	private static Holder<Trait> registerHairLengthTrait(String code, boolean longHair) {
+		return Services.PLATFORM.registerTrait(new ResourceLocation(MODID, code), () -> new HairLengthTrait(longHair));
 	}
 
 	public static void init() {

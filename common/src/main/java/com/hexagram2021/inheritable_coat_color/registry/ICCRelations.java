@@ -19,6 +19,9 @@ public final class ICCRelations {
 		RegistryRelations.registerChromosome2GeneLocus(BuiltInChromosomes.Sheep.SHEEP_7, ICCGeneLoci.DILUTION);
 		RegistryRelations.registerChromosome2GeneLocus(BuiltInChromosomes.Sheep.SHEEP_1, ICCGeneLoci.PINK);
 		RegistryRelations.registerChromosome2GeneLocus(BuiltInChromosomes.Sheep.SHEEP_20, ICCGeneLoci.ABNORMAL);
+
+		RegistryRelations.registerChromosome2GeneLocus(BuiltInChromosomes.Sheep.SHEEP_10, ICCGeneLoci.HAIR_LENGTH);
+
 		RegistryRelations.registerChromosome2GeneLocus(BuiltInChromosomes.Sheep.SHEEP_XY, ICCGeneLoci.SRY);
 		// ---- End: Register Chromosome to Gene Locus Relations ----
 
@@ -36,6 +39,10 @@ public final class ICCRelations {
 		RegistryRelations.registerGeneLocus2Gene(ICCGeneLoci.ABNORMAL, ICCGenes.MAGENTA_D);
 		RegistryRelations.registerGeneLocus2Gene(ICCGeneLoci.ABNORMAL, ICCGenes.GREEN_D);
 		RegistryRelations.registerGeneLocus2Gene(ICCGeneLoci.ABNORMAL, ICCGenes.NORMAL_COLOR_R);
+
+		RegistryRelations.registerGeneLocus2Gene(ICCGeneLoci.HAIR_LENGTH, ICCGenes.SHORT_HAIR_D);
+		RegistryRelations.registerGeneLocus2Gene(ICCGeneLoci.HAIR_LENGTH, ICCGenes.LONG_HAIR_R);
+
 		RegistryRelations.registerGeneLocus2Gene(ICCGeneLoci.SRY, ICCGenes.SRY);
 		// ---- End: Register Gene Locus to Gene Relations ----
 
@@ -47,13 +54,12 @@ public final class ICCRelations {
 		RegistryRelations.registerDisableRelation(ICCGenes.MAGENTA_D, ICCGenes.NORMAL_COLOR_R);
 		RegistryRelations.registerDisableRelation(ICCGenes.GREEN_D, ICCGenes.NORMAL_COLOR_R);
 
-		// Not expected, but we can test our code.
-		// RegistryRelations.registerDisableRelation(ICCGenes.MELANIN_R, ICCGenes.NONE_PINK_D);
-		// RegistryRelations.registerDisableRelation(ICCGenes.URANIDIN_R, ICCGenes.NONE_PINK_D);
+		RegistryRelations.registerDisableRelation(ICCGenes.SHORT_HAIR_D, ICCGenes.LONG_HAIR_R);
 		// ---- End: Register Disable Relations ----
 
 		// ---- Start: Register Entity Type to Trait Type Relations ----
 		RegistryRelations.registerEntityType2TraitType(EntityType.SHEEP, ICCTraitTypes.COLOR);
+		RegistryRelations.registerEntityType2TraitType(EntityType.SHEEP, ICCTraitTypes.HAIR_LENGTH);
 		// ---- End: Register Entity Type to Trait Type Relations ----
 
 		// ---- Start: Register Gene Frequencies ----
@@ -94,6 +100,14 @@ public final class ICCRelations {
 						.add(ICCGenes.GREEN_D, 2)
 						.add(ICCGenes.NORMAL_COLOR_R, 95)
 		);
+
+		RegistryRelations.registerGeneFrequency(
+				ICCGeneLoci.HAIR_LENGTH,
+				StableWeightedGeneList.stableBuilder()
+						.add(ICCGenes.SHORT_HAIR_D, 23)
+						.add(ICCGenes.LONG_HAIR_R, 2)
+		);
+
 		RegistryRelations.registerGeneFrequency(
 				ICCGeneLoci.SRY,
 				StableWeightedGeneList.stableBuilder().add(ICCGenes.SRY, 1)
@@ -207,6 +221,13 @@ public final class ICCRelations {
 				return ICCTraits.PINK;
 			}
 			return ICCTraits.WHITE;
+		});
+
+		TraitHandler.registerHandler(ICCTraitTypes.HAIR_LENGTH, hasActiveGene -> {
+			if(hasActiveGene.applyAsInt(ICCGenes.SHORT_HAIR_D) > 0) {
+				return ICCTraits.SHORT_HAIR;
+			}
+			return ICCTraits.LONG_HAIR;
 		});
 		// ---- End: Register Trait Handlers ----
 	}

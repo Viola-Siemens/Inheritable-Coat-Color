@@ -11,6 +11,7 @@ import static com.hexagram2021.chromosomelib.ChromosomeLib.MODID;
 
 public final class ICCTraitTypes {
 	public static final Holder<TraitType> COLOR = register("color");
+	public static final Holder<TraitType> HAIR_LENGTH = register("hair_length");
 
 	private ICCTraitTypes() {
 	}

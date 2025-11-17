@@ -73,6 +73,15 @@ public final class ICCGenes {
 	public static final Holder<Gene> NORMAL_COLOR_R = register("NORMAL_COLOR_R");
 
 	/**
+	 * 短毛基因，显性；位于 10 号染色体上
+	 */
+	public static final Holder<Gene> SHORT_HAIR_D = register("SHORT_HAIR_D");
+	/**
+	 * 长毛基因，隐性；位于 10 号染色体上
+	 */
+	public static final Holder<Gene> LONG_HAIR_R = register("LONG_HAIR_R");
+
+	/**
 	 * 雄性 SRY 基因；位于 Y 性染色体非同源区段上
 	 */
 	public static final Holder<Gene> SRY = register("SRY");

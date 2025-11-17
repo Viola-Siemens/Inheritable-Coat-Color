@@ -8,6 +8,7 @@
     "SheepEntityMixin"
   ],
   "client": [
+    "SheepFurModelMixin"
   ],
   "server": [
   ],

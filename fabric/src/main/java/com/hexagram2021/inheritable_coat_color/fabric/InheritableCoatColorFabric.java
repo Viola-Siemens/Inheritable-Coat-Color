@@ -3,7 +3,9 @@ package com.hexagram2021.inheritable_coat_color.fabric;
 import com.hexagram2021.chromosomelib.common.trait.Trait;
 import com.hexagram2021.chromosomelib.fabric.event.CLFabricEvents;
 import com.hexagram2021.inheritable_coat_color.InheritableCoatColor;
+import com.hexagram2021.inheritable_coat_color.common.ILongShortHair;
 import com.hexagram2021.inheritable_coat_color.common.trait.CoatColorTrait;
+import com.hexagram2021.inheritable_coat_color.common.trait.HairLengthTrait;
 import com.hexagram2021.inheritable_coat_color.registry.ICCRelations;
 import com.hexagram2021.inheritable_coat_color.registry.ICCTraitTypes;
 import net.fabricmc.api.ModInitializer;
@@ -21,6 +23,10 @@ public class InheritableCoatColorFabric implements ModInitializer {
 				Holder<Trait> trait = map.get(ICCTraitTypes.COLOR);
 				if(trait != null && trait.value() instanceof CoatColorTrait colorTrait) {
 					sheep.setColor(colorTrait.getColor());
+				}
+				trait = map.get(ICCTraitTypes.HAIR_LENGTH);
+				if(trait != null && trait.value() instanceof HairLengthTrait lengthTrait && sheep instanceof ILongShortHair longShortHair) {
+					longShortHair.icc$setLongHair(lengthTrait.longHair());
 				}
 			}
 		});

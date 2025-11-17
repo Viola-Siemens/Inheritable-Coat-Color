@@ -14,6 +14,7 @@ public final class ICCGeneLoci {
 	public static final Holder<GeneLocus> DILUTION = registerHomologous("dilution", 19, 0.001500D, 0.003500D);
 	public static final Holder<GeneLocus> PINK = registerHomologous("pink", 6, 0.000250D, 0.000250D);
 	public static final Holder<GeneLocus> ABNORMAL = registerHomologous("abnormal", 7, 0.000300D, 0.000275D);
+	public static final Holder<GeneLocus> HAIR_LENGTH = registerHomologous("hair_length", 19, 0.001250D, 0.001750D);
 	public static final Holder<GeneLocus> SRY = registerRight("sry", 8, 0.000250D, 0.000250D);
 
 	private ICCGeneLoci() {
