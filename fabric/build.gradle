@@ -4,8 +4,9 @@ plugins {
 }
 
 repositories {
-    flatDir {
-        dirs '../libs'
+    maven {
+        name = 'Maven from Viola Siemens'
+        url = "https://viola-siemens.github.io/pages/maven/"
     }
 }
 

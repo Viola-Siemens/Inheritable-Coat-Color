@@ -46,8 +46,9 @@ legacyForge {
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
 repositories {
-    flatDir {
-        dirs '../libs'
+    maven {
+        name = 'Maven from Viola Siemens'
+        url = "https://viola-siemens.github.io/pages/maven/"
     }
 }
 
